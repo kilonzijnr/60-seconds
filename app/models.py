@@ -23,5 +23,22 @@ class User(UserMixin, db.Model):
     pitch = db.relationship('Pitch', backref='user', lazy='dynamic')
     comment = db.relationship('comment', backref='user', lazy='dynamic')
     upvotes = db.relationsip('upvote', backref = 'user', lazy ='dynamic')
-    downvotes = db.relationship('Downvotes', backref = 'user' lazy = 'dynamic') 
-    
+    downvotes = db.relationship('Downvotes', backref = 'user', lazy = 'dynamic') 
+
+    @property
+    def password(self):
+        raise AttributeError('You dont have access Priviledge for this action')
+
+    @password.setter
+    def password(self, password):
+        self.pass_secure = generate_password_hash(password)
+
+    def verify_password(self, password):
+        return check_password_hash(self.pass_secure,password)
+
+    def __repr__(self):
+        return f'User'{self.username} 
+
+
+
+
