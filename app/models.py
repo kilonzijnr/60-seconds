@@ -37,7 +37,21 @@ class User(UserMixin, db.Model):
         return check_password_hash(self.pass_secure,password)
 
     def __repr__(self):
-        return f'User'{self.username} 
+        return f'User'{self.username}
+
+class Pitch(db.Model):
+
+    __tablename__ = 'pitches'
+
+    id = db.Column(db.Integer, primary_key = True)
+    owner_id = db.column(db.Integer, db.ForeignKey('users.id'))
+    description = db.column(db.String(), index = True)
+    title = db.column(db.String())
+    pitcher = db.column(db.String())
+    category = db.relationship('comment', backref='pitch',lazy='dynamic') 
+    upvotes = db.relationship('Upvote', backref = 'pitch', lazy = 'dynamic')
+    downvotes = db.relationship('Downvote', backref = 'pitch', lazy = 'dynamic')
+
 
 
 
