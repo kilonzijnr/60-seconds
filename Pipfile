@@ -10,6 +10,8 @@ flask-mail = "*"
 flask-login = "*"
 flask-uploads = "*"
 flask-sqlalchemy = "*"
+flask-script = "*"
+flask-migrate = "*"
 
 [dev-packages]
 
