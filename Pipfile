@@ -12,6 +12,7 @@ flask-uploads = "*"
 flask-sqlalchemy = "*"
 flask-script = "*"
 flask-migrate = "*"
+flask-wtf = "*"
 
 [dev-packages]
 
